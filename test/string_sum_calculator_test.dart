@@ -21,5 +21,10 @@ void main() {
     test('If there are more than 1 number then sum of all number', (){
       expect(calculate.add('1,2,3'), equals(6));
     });
+
+    //If number are in multiple line (\n) format
+    test('Test if numbers are in different line', (){
+      expect(calculate.add('1\n3,4'),equals(8));
+    });
   });
 }

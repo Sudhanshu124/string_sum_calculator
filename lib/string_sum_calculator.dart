@@ -3,7 +3,8 @@ class StringSumCalculator {
     if (s.isEmpty) {
       return 0;
     }
-    List<String> multipleNumber = s.split(',');
+    String numberWithoutNewLine = s.replaceAll('\n',',');
+    List<String> multipleNumber = numberWithoutNewLine.split(',');
     int sumOfNumber = 0;
     for (String number in multipleNumber) {
       sumOfNumber = sumOfNumber + int.parse(number);
