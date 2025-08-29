@@ -6,9 +6,20 @@ void main() {
   setUp((){
     calculate = StringSumCalculator();
   });
-  group('Sum of number will be calculated here', (){
+  group('Sum of numbers will be calculated here', (){
+    //For empty string
     test('Return 0 for empty string', (){
       expect(calculate.add(''),equals(0) );
+    });
+
+    //Test case if there is only one number
+    test('Test case if there is only one number and that is not 0',(){
+      expect(calculate.add('2'), equals(2));
+    });
+
+    //For more than 1  number
+    test('If there are more than 1 number then sum of all number', (){
+      expect(calculate.add('1,2,3'), equals(6));
     });
   });
 }
