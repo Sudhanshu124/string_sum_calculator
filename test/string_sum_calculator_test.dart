@@ -47,5 +47,21 @@ void main() {
         throwsA(predicate((e) => e.toString().contains('-1,-3'))),
       );
     });
+
+    //Test cases for custom delimiters
+    test('should handle custom delimiter semicolon', () {
+      expect(calculate.add('//;\n1;2'), equals(3));
+    });
+
+    test('should handle custom delimiter with newlines', () {
+      expect(calculate.add('//|\n1|2\n3'), equals(6));
+    });
+
+    test('should handle custom delimiter with negative numbers', () {
+      expect(
+        () => calculate.add('//;\n1;-2;3'),
+        throwsA(predicate((e) => e.toString().contains('negative numbers not allowed -2'))),
+      );
+    });
   });
 }
