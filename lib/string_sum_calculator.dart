@@ -3,12 +3,17 @@ class StringSumCalculator {
     if (s.isEmpty) {
       return 0;
     }
-    String numberWithoutNewLine = s.replaceAll('\n',',');
-    List<String> multipleNumber = numberWithoutNewLine.split(',');
-    int sumOfNumber = 0;
-    for (String number in multipleNumber) {
-      sumOfNumber = sumOfNumber + int.parse(number);
-    }
-    return sumOfNumber;
+    List<int> multipleNumber = _parseNumber(s);
+    return (multipleNumber.reduce((a, b) => a + b));
+  }
+
+/* Function to format string according to our requirement*/
+  List<int> _parseNumber(String numbers) {
+    String numberWithoutDelimiters = numbers.replaceAll('\n', ',');
+    return numberWithoutDelimiters
+        .split(',')
+        .where((nums) => nums.isNotEmpty)
+        .map((nums) => int.parse(nums))
+        .toList();
   }
 }
